@@ -14,23 +14,18 @@ load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 def create_app():
     app = Flask(__name__)
 
-    # database_url = os.getenv("DATABASE_URL")
+    database_path = os.path.abspath(
+        os.getenv(
+            "SQLITE_DATABASE_PATH",
+            os.path.join(app.instance_path, "autoflick.db"),
+        )
+    )
+    os.makedirs(os.path.dirname(database_path), exist_ok=True)
 
-    # if not database_url:
-    #     raise RuntimeError("DATABASE_URL is missing from environment variables.")
-
-    # # Support PostgreSQL connection URLs from hosting providers
-    # if database_url.startswith("postgres://"):
-    #     database_url = database_url.replace(
-    #         "postgres://", "postgresql://", 1
-    #     )
-
-    # app.config["SQLALCHEMY_DATABASE_URI"] = database_url
-    # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-    # app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-    #     "pool_pre_ping": True
-    # }
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        "sqlite:///" + database_path.replace("\\", "/")
+    )
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     CORS(app)
 
