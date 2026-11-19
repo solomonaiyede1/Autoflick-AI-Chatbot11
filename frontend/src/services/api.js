@@ -1,5 +1,5 @@
 
-const API_URL = "https://autoflick-ai-chatbot11.onrender.com";
+const API_URL = "https://autoflick-ai-chatbot11-backend.onrender.com";
 
 // NORMAL AI CHAT
 export async function sendMessage(messages, conversationId = null) {
