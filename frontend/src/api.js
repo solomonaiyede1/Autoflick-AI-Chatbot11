@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://127.0.0.1:5000",
+  baseURL: "https://autoflick-ai-chatbot11-backend.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
@@ -10,7 +10,7 @@ const API = axios.create({
 
 export const sendMessage = async (message) => {
   try {
-    const response = await API.post("/api/chat", {
+    const response = await API.post("https://autoflick-ai-chatbot11-backend.onrender.com/api/chat", {
       message,
     });
 
