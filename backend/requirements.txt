@@ -25,3 +25,4 @@ pypdf>=5.0.0,<7.0.0
 Flask-SQLAlchemy
 PyMySQL
 gunicorn
+openai
