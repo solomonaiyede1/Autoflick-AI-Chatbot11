@@ -32,7 +32,7 @@ MAX_PAGES = 50
 # ==================================================
 
 def get_openai_client():
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = "key_wphrp9qRKhgzoaeV"
 
     if not api_key:
         raise RuntimeError(
@@ -43,7 +43,7 @@ def get_openai_client():
 
 
 def get_model():
-    return os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    return "gpt-4o-mini"
 
 
 SYSTEM_MESSAGE = {
